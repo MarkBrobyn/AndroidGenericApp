@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Android Generic App</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="generic_app">My Generic App</string>
+    <string name="action_settings">Settings</string>
+</resources>
