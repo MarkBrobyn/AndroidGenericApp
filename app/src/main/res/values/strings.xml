@@ -3,5 +3,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="generic_app">My Generic App</string>
+    <string name="button_1">Button 1</string>
     <string name="action_settings">Settings</string>
 </resources>

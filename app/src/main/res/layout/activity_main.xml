@@ -8,21 +8,28 @@
 
     <TextView
         android:text="@string/generic_app"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dip"
-        android:textSize="36sp" />
+        android:textSize="36sp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="@color/blue"
+        />
 
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_weight="4"
+        >
+
         <TableRow>
 
             <Button android:id="@+id/button_1"
-                android:layout_width="15dp"
+                android:layout_width="@dimen/main_button_width"
                 android:layout_height="wrap_content"
-                android:text="button_1"
+                android:text="@string/button_1"
                 />
             <Button android:id="@+id/button_2"
                 android:layout_width="15dp"
