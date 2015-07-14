@@ -10,11 +10,21 @@
         android:text="@string/generic_app"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dip"
         android:textSize="36sp"
         android:layout_weight="1"
         android:gravity="center"
         android:background="@color/blue"
+        />
+
+    <TextView
+        android:id="@+id/status"
+        android:text="@string/status"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_weight="0.5"
+        android:gravity="center"
+        android:background="@color/cream"
         />
 
     <TableLayout
