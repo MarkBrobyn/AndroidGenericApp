@@ -1,3 +1,5 @@
+// http://www.mysamplecode.com/2011/10/android-dynamic-layout-using-xml-add.html
+
 package com.brobyn.androidgenericapp;
 
 import android.app.Activity;
@@ -7,16 +9,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
     TextView status;
+    /*
     Button button_1;
     Button button_2;
     Button button_3;
-
+    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,21 +30,36 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         status=(TextView) findViewById(R.id.status);
         status.setText("Waiting...");
 
-        button_1=(Button)findViewById(R.id.button_1);
-        button_1.setOnClickListener(this);
+        final EditText mainEditText=(EditText) findViewById(R.id.mainEditText);
 
-        button_2=(Button)findViewById(R.id.button_2);
-        button_2.setOnClickListener(this);
+        Button button_1=(Button)findViewById(R.id.button_1);
+        button_1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                status.setText("Button 1 clicked");
+            }
+        });
 
-        button_3=(Button)findViewById(R.id.button_3);
-        button_3.setOnClickListener(this);
+        Button button_2=(Button)findViewById(R.id.button_2);
+        button_2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                status.setText("Button 2 clicked");
+            }
+        });
+
+        Button button_3=(Button)findViewById(R.id.button_3);
+        button_3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                status.setText("Button 3 clicked");
+            }
+        });
 
         Button button_4=(Button)findViewById(R.id.button_4);
         button_4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                status.setText("Button 4 clicked");
+                status.setText(mainEditText.getText().toString());
             }
         });
+
     }
 
     @Override
@@ -88,4 +107,5 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void onClick(View v) {
         status.setText("Button 1 clicked");
     }
+
 }
