@@ -4,6 +4,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="generic_app">My Generic App</string>
     <string name="button_1">Button 1</string>
+    <string name="button_2">Button 2</string>
+    <string name="button_3">Button 3</string>
+    <string name="button_4">Button 4</string>
     <string name="action_settings">Settings</string>
     <string name="status">Status...</string>
     <string name="editHint">Edit me...</string>
