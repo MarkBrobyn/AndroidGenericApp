@@ -3,6 +3,7 @@
 package com.brobyn.androidgenericapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -42,14 +43,21 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         Button button_2=(Button)findViewById(R.id.button_2);
         button_2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                status.setText("Button 2 clicked");
+                status.setText("EditorActivity");
+                //Intent i=new Intent("EditorActivity");
+                Intent i = new Intent(MainActivity.this,EditActivity.class);
+                startActivity(i);
             }
         });
 
         Button button_3=(Button)findViewById(R.id.button_3);
         button_3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                status.setText("Button 3 clicked");
+                status.setText("EditActivity");
+                Intent i=new Intent("EditActivity");
+                //Intent i;
+                //i = new Intent(this,EditActivity.class);
+                startActivity(i);
             }
         });
 
