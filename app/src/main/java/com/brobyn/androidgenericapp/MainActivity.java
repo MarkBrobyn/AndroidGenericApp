@@ -33,10 +33,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         final EditText mainEditText=(EditText) findViewById(R.id.mainEditText);
 
-        Button button_1=(Button)findViewById(R.id.button_1);
-        button_1.setOnClickListener(new View.OnClickListener() {
+        Button button_add_item=(Button)findViewById(R.id.button_add_item);
+        button_add_item.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                status.setText("Button 1 clicked");
+                status.setText("Add item...");
             }
         });
 

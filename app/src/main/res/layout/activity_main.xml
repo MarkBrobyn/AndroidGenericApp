@@ -13,7 +13,7 @@
         android:textSize="36sp"
         android:layout_weight="1"
         android:gravity="center"
-        android:background="@color/blue"
+        android:background="@color/apppage"
         />
 
     <TextView
@@ -36,10 +36,11 @@
 
         <TableRow>
 
-            <Button android:id="@+id/button_1"
+            <Button android:id="@+id/button_add_item"
                 android:layout_width="@dimen/main_button_width"
                 android:layout_height="wrap_content"
-                android:text="@string/button_1"
+                android:text="@string/add_item"
+                android:textAllCaps="false"
                 />
             <Button android:id="@+id/button_2"
                 android:layout_width="15dp"
