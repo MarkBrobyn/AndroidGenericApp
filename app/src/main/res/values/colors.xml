@@ -29,4 +29,6 @@
         <item>@color/lightcream</item>
     </integer-array>
 
+    <color name="appStatus">@color/lightcream</color>
+    <color name="appPage">@color/cream</color>
 </resources>

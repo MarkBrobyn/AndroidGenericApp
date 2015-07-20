@@ -14,14 +14,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
-public class MainActivity extends ActionBarActivity implements View.OnClickListener {
+public class MainActivity extends ActionBarActivity {
 
     TextView status;
-    /*
-    Button button_1;
-    Button button_2;
-    Button button_3;
-    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,42 +26,27 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         status=(TextView) findViewById(R.id.status);
         status.setText("Waiting...");
 
-        final EditText mainEditText=(EditText) findViewById(R.id.mainEditText);
+        //final EditText mainEditText=(EditText) findViewById(R.id.mainEditText);
+
+
 
         Button button_add_item=(Button)findViewById(R.id.button_add_item);
         button_add_item.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                status.setText("Add item...");
-            }
-        });
-
-        Button button_2=(Button)findViewById(R.id.button_2);
-        button_2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                status.setText("EditorActivity");
+                status.setText("button_add_item");
                 //Intent i=new Intent("EditorActivity");
-                Intent i = new Intent(MainActivity.this,EditActivity.class);
+                Intent i = new Intent(MainActivity.this,addItemActivity.class);
                 startActivity(i);
             }
         });
 
-        Button button_3=(Button)findViewById(R.id.button_3);
-        button_3.setOnClickListener(new View.OnClickListener() {
+        Button button_list_items=(Button)findViewById(R.id.button_list_items);
+        button_list_items.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                status.setText("EditActivity");
-                Intent i=new Intent("EditActivity");
-                //Intent i;
-                //i = new Intent(this,EditActivity.class);
-                startActivity(i);
+                status.setText("button_list_items");
             }
         });
-
-        Button button_4=(Button)findViewById(R.id.button_4);
-        button_4.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                status.setText(mainEditText.getText().toString());
-            }
-        });
+        //status.setText(mainEditText.getText().toString());
 
     }
 
@@ -76,24 +56,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
-    /*
-     public class MyActivity extends Activity {
-     protected void onCreate(Bundle icicle) {
-         super.onCreate(icicle);
-
-         setContentView(R.layout.content_layout_id);
-
-         final Button button = (Button) findViewById(R.id.button_id);
-         button.setOnClickListener(new View.OnClickListener() {
-             public void onClick(View v) {
-                 // Perform action on click
-             }
-         });
-     }
- }
-
-    */
 
 
     @Override
@@ -110,10 +72,4 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    public void onClick(View v) {
-        status.setText("Button 1 clicked");
-    }
-
 }
