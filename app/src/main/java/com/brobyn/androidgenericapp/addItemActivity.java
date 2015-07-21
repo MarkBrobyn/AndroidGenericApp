@@ -1,4 +1,3 @@
-// http://www.mysamplecode.com/2011/10/android-dynamic-layout-using-xml-add.html
 
 package com.brobyn.androidgenericapp;
 
@@ -7,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+// http://www.mysamplecode.com/2011/10/android-dynamic-layout-using-xml-add.html
+// http://stackoverflow.com/questions/4878159/android-whats-the-best-way-to-share-data-between-activities
 
 public class addItemActivity extends ActionBarActivity {
 
