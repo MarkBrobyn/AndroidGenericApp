@@ -31,7 +31,9 @@
 
     <color name="lightblue">#66eeFF</color>
     <color name="verylightblue">#77ffFF</color>
+    <color name="lightgreen">#aaffaa</color>
     <color name="appStatus">@color/lightcream</color>
     <color name="appPage">@color/cream</color>
     <color name="appEdit">@color/lightblue</color>
+    <color name="appListView">@color/lightgreen</color>
 </resources>
