@@ -13,12 +13,31 @@ import java.util.ArrayList;
 // http://www.mysamplecode.com/2011/10/android-dynamic-layout-using-xml-add.html
 // http://stackoverflow.com/questions/4878159/android-whats-the-best-way-to-share-data-between-activities
 
-public class addItemActivity extends ActionBarActivity {
+public class listItemsActivity extends ActionBarActivity {
+
+    ListView myListView;
+    ArrayAdapter myArrayAdapter;
+    ArrayList<String> myArrayList=new ArrayList<String>();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_item_activity);
+        setContentView(R.layout.list_items_activity);
+
+        myArrayList.add("Mark");
+        myArrayList.add("Gaby");
+        myArrayList.add("Izzy");
+        myArrayList.add("Paul");
+        myArrayList.add("Viki");
+
+        myListView=(ListView) findViewById(R.id.additem_listview);
+        myArrayAdapter=new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,
+                myArrayList);
+        myListView.setAdapter(myArrayAdapter);
+        myArrayAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -27,6 +46,8 @@ public class addItemActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
+
 
 
     @Override

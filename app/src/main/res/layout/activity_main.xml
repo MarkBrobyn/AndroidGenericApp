@@ -9,9 +9,9 @@
     <TextView
         android:text="@string/pageHome"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:textSize="36sp"
-        android:layout_weight="1"
+
         android:gravity="center"
         android:background="@color/appPage"
         />
@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_weight="11"
+        android:layout_weight="1"
         >
 
         <TableRow>
@@ -100,9 +100,8 @@
         android:id="@+id/status"
         android:text="@string/status"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:textSize="18sp"
-        android:layout_weight="1"
         android:gravity="center"
         android:background="@color/appStatus"
         />
