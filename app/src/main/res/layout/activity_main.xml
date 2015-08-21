@@ -9,7 +9,7 @@
     <TextView
         android:text="@string/pageHome"
         android:layout_width="fill_parent"
-        android:layout_height="80dp"
+        android:layout_height="@dimen/top_bar_height"
         android:textSize="36sp"
 
         android:gravity="center"
@@ -80,6 +80,24 @@
                 android:textAllCaps="false"
                 />
         </TableRow>
+
+        <TableRow>
+            <Button android:id="@+id/button_sqlite"
+                android:layout_width="@dimen/main_button_width"
+                android:layout_height="wrap_content"
+                android:text="@string/button_sqlite"
+                android:textAllCaps="false"
+                />
+            <Button android:id="@+id/button_prefs"
+                android:layout_width="@dimen/main_button_width"
+                android:layout_height="wrap_content"
+                android:text="@string/button_prefs"
+                android:textAllCaps="false"
+                />
+        </TableRow>
+
+
+
         <TableRow>
             <Button android:id="@+id/button_round"
                 android:layout_width="@dimen/main_button_width"
@@ -100,7 +118,7 @@
         android:id="@+id/status"
         android:text="@string/status"
         android:layout_width="fill_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/bottom_bar_height"
         android:textSize="18sp"
         android:gravity="center"
         android:background="@color/appStatus"

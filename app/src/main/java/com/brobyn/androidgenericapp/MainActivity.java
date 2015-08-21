@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import static android.widget.Toast.*;
 
+// http://www.reigndesign.com/blog/using-your-own-sqlite-database-in-android-applications/
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -31,13 +33,13 @@ public class MainActivity extends ActionBarActivity {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if(!prefs.getBoolean("FIRSTRUN", false)) {
-            // run your one time code
+            makeText(getApplicationContext(),"FIRST RUN", LENGTH_SHORT).show();
 
             SharedPreferences.Editor editor = prefs.edit();
             editor.putBoolean("FIRSTRUN", true);
             editor.commit();
         }
-
+        else  makeText(getApplicationContext(), "NOT FIRST RUN", LENGTH_SHORT).show();
 
 
         status=(TextView) findViewById(R.id.status);
@@ -65,6 +67,31 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(i);
             }
         });
+
+        Button button_sqlite=(Button)findViewById(R.id.button_sqlite);
+        button_sqlite.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                status.setText("button_sqlite");
+                //Intent i = new Intent(MainActivity.this, listItemsActivity.class);
+                //startActivity(i);
+            }
+        });
+
+        Button button_prefs=(Button)findViewById(R.id.button_prefs);
+        button_prefs.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                status.setText("button_prefs");
+                //Intent i = new Intent(MainActivity.this, listItemsActivity.class);
+                //startActivity(i);
+            }
+        });
+
+
+
+
+
+
+
         //status.setText(mainEditText.getText().toString());
 
 
@@ -81,6 +108,7 @@ public class MainActivity extends ActionBarActivity {
         Toast toast = makeText(context, text, duration);
         toast.show();
 
+        // Quick toast
         makeText(getApplicationContext(),
                 "Button is clicked", LENGTH_LONG).show();
             }
@@ -109,6 +137,7 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent(this,AppPreferences.class));
             return true;
         }
 
