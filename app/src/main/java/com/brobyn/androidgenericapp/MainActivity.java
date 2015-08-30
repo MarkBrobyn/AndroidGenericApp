@@ -17,6 +17,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import android.database.SQLException;
+
 import static android.widget.Toast.*;
 
 // http://www.reigndesign.com/blog/using-your-own-sqlite-database-in-android-applications/
@@ -114,7 +117,27 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        DataBaseHelper myDbHelper = new DataBaseHelper(this);
 
+        try {
+
+            myDbHelper.createDataBase();
+
+        } catch (IOException ioe) {
+
+            throw new Error("Unable to create database");
+
+        }
+
+        try {
+
+            myDbHelper.openDataBase();
+
+        }catch(SQLException sqle){
+
+            throw sqle;
+
+        }
 
 
 

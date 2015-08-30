@@ -21,7 +21,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static String DB_PATH = "/data/data/com.brobyn.androidgenericapp/databases/";
 
     //private static String DB_NAME = "myDBName";
-    private static String DB_NAME = "androidGenericAppDB";
+    private static String DB_NAME = "androidgenericappdb";
 
     private SQLiteDatabase myDataBase;
 

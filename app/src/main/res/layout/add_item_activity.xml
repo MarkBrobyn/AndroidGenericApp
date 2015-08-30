@@ -1,5 +1,6 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:documentation="documentation.brobyn.com"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -15,18 +16,24 @@
         android:background="@color/appPage"
         />
 
+
+
     <EditText
         android:hint="@string/enterTitle"
-        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="27sp"
         android:layout_weight="1"
+        documentation:layout_width="0dp"
+        android:layout_width="fill_parent"
+        android:maxLines="2"
         android:gravity="top"
         android:padding="10dp"
         android:background="@color/appEdit"
-
-
-        android:maxLines="1" />
+        android:editable="true"
+        android:lines="2"
+        android:maxHeight="200dp"
+        android:fadeScrollbars="false"
+        android:nestedScrollingEnabled="false" />
 
     <EditText
         android:hint="@string/enterContent"
@@ -37,8 +44,7 @@
         android:gravity="top"
         android:padding="10dp"
         android:background="@color/verylightblue"
-        />
-
+        android:minHeight="500dp" />
 
     <TextView
         android:id="@+id/status"
