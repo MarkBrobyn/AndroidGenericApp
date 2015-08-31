@@ -3,6 +3,7 @@ package com.brobyn.androidgenericapp;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 // http://www.mysamplecode.com/2011/10/android-dynamic-layout-using-xml-add.html
 // http://stackoverflow.com/questions/4878159/android-whats-the-best-way-to-share-data-between-activities
 
-public class listItemsActivity extends ActionBarActivity {
+public class listItemsActivity extends AppCompatActivity {
 
     ListView myListView;
     ArrayAdapter myArrayAdapter;

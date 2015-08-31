@@ -44,13 +44,10 @@ public class MainActivity extends ActionBarActivity {
         }
         else  makeText(getApplicationContext(), "NOT FIRST RUN", LENGTH_SHORT).show();
 
-
         status=(TextView) findViewById(R.id.status);
         status.setText("Waiting...");
 
         //final EditText mainEditText=(EditText) findViewById(R.id.mainEditText);
-
-
 
         Button button_add_item=(Button)findViewById(R.id.button_add_item);
         button_add_item.setOnClickListener(new View.OnClickListener() {
@@ -75,8 +72,8 @@ public class MainActivity extends ActionBarActivity {
         button_sqlite.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 status.setText("button_sqlite");
-                //Intent i = new Intent(MainActivity.this, listItemsActivity.class);
-                //startActivity(i);
+                Intent i = new Intent(MainActivity.this, SQLiteActivity.class);
+                startActivity(i);
             }
         });
 
@@ -129,16 +126,14 @@ public class MainActivity extends ActionBarActivity {
 
         }
 
+        /*
         try {
-
             myDbHelper.openDataBase();
-
-        }catch(SQLException sqle){
-
-            throw sqle;
-
         }
-
+        catch(SQLException sqle){
+            throw sqle;
+        }
+        */
 
 
     }
