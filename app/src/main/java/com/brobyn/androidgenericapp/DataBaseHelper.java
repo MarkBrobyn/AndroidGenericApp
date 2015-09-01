@@ -2,6 +2,7 @@
 
 package com.brobyn.androidgenericapp;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -98,6 +99,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return myDataBase.query("items", new String[] {"datetime","title","content","_id"}, null, null, null, null, null);
     }
 
+    public long addItem(String title, String content) {
+        ContentValues initialValues=new ContentValues();
+        initialValues.put("title",title);
+        initialValues.put("content",content);
+        return myDataBase.insert("items",null, initialValues);
+    }
+
     public void openDataBase() throws SQLException {
         //Open the database
         String myPath = DB_PATH + DB_NAME;
@@ -107,7 +115,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void open() throws SQLException {
         //Open the database
         String myPath = DB_PATH + DB_NAME;
-        myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
+        myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
     }
 
     @Override

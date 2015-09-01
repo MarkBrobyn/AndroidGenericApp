@@ -15,6 +15,38 @@
         android:gravity="center"
         android:background="@color/appPage"
         />
+    <EditText
+        android:hint="@string/enterTitle"
+        android:layout_height="50dp"
+        android:textSize="27sp"
+        android:layout_width="fill_parent"
+        android:maxLines="2"
+        android:gravity="top"
+        android:padding="10dp"
+        android:background="@color/appEdit"
+        android:editable="true"
+        android:lines="2"
+        android:maxHeight="200dp"
+        android:fadeScrollbars="false"
+        android:nestedScrollingEnabled="false" />
+
+    <EditText
+        android:hint="@string/enterContent"
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
+        android:textSize="27sp"
+        android:gravity="top"
+        android:padding="10dp"
+        android:background="@color/verylightblue"
+        android:minHeight="500dp"
+        />
+
+    <Button android:id="@+id/button_sqlite_add_item"
+        android:layout_width="@dimen/main_button_width"
+        android:layout_height="wrap_content"
+        android:text="@string/button_sqlite_add_item"
+        android:textAllCaps="false"
+        />
 
     <TableLayout
         android:layout_width="wrap_content"
@@ -33,10 +65,24 @@
                 />
         </TableRow>
 
-    </TableLayout>
 
+
+        <TableRow>
+
+        </TableRow>
+
+    </TableLayout>
+    <ListView
+        android:id="@+id/sqlite_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:textSize="18sp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="@color/appListView"
+        />
     <TextView
-        android:id="@+id/status"
+        android:id="@+id/sqlite_status"
         android:text="@string/status"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/bottom_bar_height"
