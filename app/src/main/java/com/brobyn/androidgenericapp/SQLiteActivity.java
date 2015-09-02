@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -32,17 +33,39 @@ public class SQLiteActivity extends AppCompatActivity {
 
     long addItemId;
 
+    private void showAll(){
+        int count = 0;
+        makeText(getApplicationContext(), "SQLite\nShow All", LENGTH_LONG).show();
+
+        db.open();
+        Cursor cursor = db.showAll();
+        myArrayList.clear();
+        if (cursor.moveToFirst()) {
+            do {
+                myArrayList.add(0, cursor.getString(0) + " " + cursor.getString(1) + " " + cursor.getString(2) + " " + cursor.getString(3)); // add to start of list
+                //myArrayList.add(cursor.getString(1));
+                count++;
+            } while (cursor.moveToNext());
+        }
+        db.close();
+        myArrayAdapter.notifyDataSetChanged();
+        status = (TextView) findViewById(R.id.sqlite_status);
+        status.setText("Items = "+String.valueOf(count));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sqlite);
 
 // list view stuff
+        /*
         myArrayList.add("Mark");
         myArrayList.add("Gaby");
         myArrayList.add("Izzy");
         myArrayList.add("Paul");
         myArrayList.add("Viki");
+        */
 
         myListView=(ListView) findViewById(R.id.sqlite_listview);
         myArrayAdapter=new ArrayAdapter<String>(this,
@@ -52,25 +75,32 @@ public class SQLiteActivity extends AppCompatActivity {
         myArrayAdapter.notifyDataSetChanged();
 // end list view stuff
 
+        showAll();
 
         Button button_sqlite_show_all=(Button)findViewById(R.id.button_sqlite_show_all);
         button_sqlite_show_all.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int count=0;
-                makeText(getApplicationContext(),"SQLite\nShow All", LENGTH_LONG).show();
+                /*
+                int count = 0;
+
+                makeText(getApplicationContext(), "SQLite\nShow All", LENGTH_LONG).show();
 
                 db.open();
-                Cursor cursor=db.showAll();
+                Cursor cursor = db.showAll();
+                myArrayList.clear();
                 if (cursor.moveToFirst()) {
                     do {
-                        myArrayList.add(cursor.getString(1));
+                        myArrayList.add(0, cursor.getString(0) + " " + cursor.getString(1) + " " + cursor.getString(2) + " " + cursor.getString(3)); // add to start of list
+                        //myArrayList.add(cursor.getString(1));
                         count++;
                     } while (cursor.moveToNext());
                 }
                 db.close();
                 myArrayAdapter.notifyDataSetChanged();
-                status=(TextView) findViewById(R.id.sqlite_status);
-                status.setText(String.valueOf(count));
+                status = (TextView) findViewById(R.id.sqlite_status);
+                status.setText("Items = "+String.valueOf(count));
+                */
+                showAll();
             }
         });
 
@@ -79,14 +109,26 @@ public class SQLiteActivity extends AppCompatActivity {
         Button button_sqlite_add_item=(Button)findViewById(R.id.button_sqlite_add_item);
         button_sqlite_add_item.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                EditText title_text= (EditText) findViewById(R.id.title_edittext);
+                EditText content_text= (EditText) findViewById(R.id.content_edittext);
                 makeText(getApplicationContext(), "SQLite\nAdd item", LENGTH_LONG).show();
                 db.open();
-                addItemId = db.addItem("Title test", "Content test");
+                addItemId = db.addItem(title_text.getText().toString(),content_text.getText().toString());
                 db.close();
+                showAll();
             }
         });
 
 
+        Button button_sqlite_delete_all=(Button)findViewById(R.id.button_sqlite_delete_all);
+        button_sqlite_delete_all.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                makeText(getApplicationContext(), "SQLite\nDelete all", LENGTH_LONG).show();
+                db.open();
+                db.deleteAll();
+                db.close();
+            }
+        });
 
 
         db.open();

@@ -99,6 +99,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return myDataBase.query("items", new String[] {"datetime","title","content","_id"}, null, null, null, null, null);
     }
 
+    public void deleteAll() {
+        myDataBase.delete("items",null, null);
+    }
+
     public long addItem(String title, String content) {
         ContentValues initialValues=new ContentValues();
         initialValues.put("title",title);
