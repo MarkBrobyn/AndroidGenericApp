@@ -106,8 +106,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public long addItem(String title, String content) {
         ContentValues initialValues=new ContentValues();
         initialValues.put("title",title);
-        initialValues.put("content",content);
+        initialValues.put("content", content);
         return myDataBase.insert("items",null, initialValues);
+    }
+
+    public Cursor getItem(String id) throws SQLException {
+        Cursor mCursor = myDataBase.query(true, "items",
+                new String[] {"datetime","title","content","_id"},
+                "_id="+id,
+                null,null,null,null,null);
+        if(mCursor!=null) {mCursor.moveToFirst();}
+        return mCursor;
     }
 
     public void openDataBase() throws SQLException {

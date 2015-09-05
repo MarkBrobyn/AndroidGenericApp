@@ -1,5 +1,6 @@
 package com.brobyn.androidgenericapp;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 
@@ -125,6 +126,9 @@ public class SQLiteActivity extends AppCompatActivity {
                 //makeText(getApplicationContext(), "SQLite\nonItemClick" + text, LENGTH_LONG).show();
                 item=(Item) myListView.getItemAtPosition(position);
                 makeText(getApplicationContext(), "SQLite\nonItemClick\n" + item.id, LENGTH_LONG).show();
+                Intent i = new Intent(SQLiteActivity.this, EditItemActivity.class);
+                i.putExtra("id",item.id);
+                startActivity(i);
             }
         });
         myArrayAdapter.notifyDataSetChanged();
