@@ -6,13 +6,18 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.makeText;
@@ -24,17 +29,41 @@ public class SQLiteActivity extends AppCompatActivity {
 
     TextView status;
 
-
     DataBaseHelper db=new DataBaseHelper(this); //
 
     ListView myListView;
     ArrayAdapter myArrayAdapter;
-    ArrayList<String> myArrayList=new ArrayList<String>();
+    //ArrayList<String> myArrayList=new ArrayList<String>();
+    ArrayList myArrayList=new ArrayList();
+    //ArrayList<Int> myArrayList=new ArrayList<String>();
 
     long addItemId;
 
-    private void showAll(){
+    SimpleDateFormat dateFormatter = new SimpleDateFormat("E dd MMM K:mm aa");
+    SimpleDateFormat dateFromSqlFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+    class Item {
+        private String title;
+        private String id;
+        //getters and setters;
+        public String toString(){
+            return title;
+        }
+        public void setTitle(String title){
+            this.title = title;
+        }
+        public void setID(String id){
+            this.id = id;
+        }
+        //public String getID() {return this.id;}
+    }
+
+    private void showAll() throws ParseException {
         int count = 0;
+        Date date;
+        Item item;
+        String itemDate="";
+
         makeText(getApplicationContext(), "SQLite\nShow All", LENGTH_LONG).show();
 
         db.open();
@@ -42,7 +71,22 @@ public class SQLiteActivity extends AppCompatActivity {
         myArrayList.clear();
         if (cursor.moveToFirst()) {
             do {
-                myArrayList.add(0, cursor.getString(0) + " " + cursor.getString(1) + " " + cursor.getString(2) + " " + cursor.getString(3)); // add to start of list
+                item=new Item();
+                date=new Date();
+                //myHolder.setTitle("Item "+cursor.getString(3)+": "+cursor.getString(1));
+                try {
+                    date=dateFromSqlFormatter.parse(cursor.getString(0));
+                }
+                catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                itemDate=dateFormatter.format(date);
+                item.setTitle(itemDate + ": " + cursor.getString(1));
+                //item.setTitle(cursor.getString(0) + ": " + cursor.getString(1));
+                item.setID(cursor.getString(3));
+                myArrayList.add(0,item); // add to start of list
+
+                //myArrayList.add(0, cursor.getString(0) + " " + cursor.getString(1) + " " + cursor.getString(2) + " " + cursor.getString(3)); // add to start of list
                 //myArrayList.add(cursor.getString(1));
                 count++;
             } while (cursor.moveToNext());
@@ -57,7 +101,7 @@ public class SQLiteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sqlite);
-
+        findViewById(R.id.sqlite_top_bar).setVisibility(View.GONE);
 // list view stuff
         /*
         myArrayList.add("Mark");
@@ -68,14 +112,50 @@ public class SQLiteActivity extends AppCompatActivity {
         */
 
         myListView=(ListView) findViewById(R.id.sqlite_listview);
-        myArrayAdapter=new ArrayAdapter<String>(this,
+        myArrayAdapter=new ArrayAdapter(this,
+        //myArrayAdapter=new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
                 myArrayList);
+
         myListView.setAdapter(myArrayAdapter);
+        myListView.setOnItemClickListener(new OnItemClickListener() {
+            public void onItemClick(AdapterView parent, View view, int position, long id) {
+                Item item=new Item();
+                String text = "\n" + parent.toString() + "\n" + view.toString() + "\n" + position + "\n" + id;
+                //makeText(getApplicationContext(), "SQLite\nonItemClick" + text, LENGTH_LONG).show();
+                item=(Item) myListView.getItemAtPosition(position);
+                makeText(getApplicationContext(), "SQLite\nonItemClick\n" + item.id, LENGTH_LONG).show();
+            }
+        });
         myArrayAdapter.notifyDataSetChanged();
+        /*
+        ListView lstFrnd = (ListView) findViewById(R.id.frndLst);
+ArrayList<String> listItems = new ArrayList<String>();
+ArrayAdapter<String> adapter;
+adapter = new ArrayAdapter<String>(this, android.R.layout.XXX, listItems);
+for (int i = 0; i < ans.length(); i++) {
+    int id = integer.parseInt(ans.getJSONObject(i).getString("UserID"));
+    String disName = ans.getJSONObject(i).getString("DisplayName");
+    DisNameID dis = new DisNameID(disName, id);
+    adapter.add(disName + " - " + id);
+}
+
+
+class Holder {
+    private String name;
+    private String id;
+    //getters and setters;
+    public String toString(){ return name };
+}
+*/
 // end list view stuff
 
-        showAll();
+
+        try {
+            showAll();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         Button button_sqlite_show_all=(Button)findViewById(R.id.button_sqlite_show_all);
         button_sqlite_show_all.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +180,11 @@ public class SQLiteActivity extends AppCompatActivity {
                 status = (TextView) findViewById(R.id.sqlite_status);
                 status.setText("Items = "+String.valueOf(count));
                 */
-                showAll();
+                try {
+                    showAll();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -115,7 +199,11 @@ public class SQLiteActivity extends AppCompatActivity {
                 db.open();
                 addItemId = db.addItem(title_text.getText().toString(),content_text.getText().toString());
                 db.close();
-                showAll();
+                try {
+                    showAll();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -127,6 +215,11 @@ public class SQLiteActivity extends AppCompatActivity {
                 db.open();
                 db.deleteAll();
                 db.close();
+                try {
+                    showAll();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         });
 

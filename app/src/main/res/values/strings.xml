@@ -26,7 +26,7 @@
     <string name="title_activity_editor">EditorActivity</string>
     <string name="pageHome">Home</string>
     <string name="pageAddItem">Add Item</string>
-    <string name="enterTitle">Enter title</string>
+    <string name="enterTitle">Enter title...</string>
     <string name="enterContent">Enter content...</string>
     <string name="pref1">Preference 1</string>
     <string name="pref1_summ">This is preference 1</string>

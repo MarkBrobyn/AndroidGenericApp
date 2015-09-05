@@ -7,6 +7,7 @@
     >
 
     <TextView
+        android:id="@+id/sqlite_top_bar"
         android:text="@string/activity_sqlite"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/top_bar_height"
