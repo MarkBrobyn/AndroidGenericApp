@@ -5,6 +5,7 @@ package com.brobyn.androidgenericapp;
  */
 
 //import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -14,7 +15,11 @@ import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.makeText;
 
 import android.database.Cursor;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+
+import java.text.ParseException;
 
 public class EditItemActivity extends AppCompatActivity {
 
@@ -22,10 +27,14 @@ public class EditItemActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_item);
-        String itemID = getIntent().getStringExtra("id");
+        final String itemID = getIntent().getStringExtra("id");
         makeText(getApplicationContext(), "EditItem\nonCreate\nitemID=" +itemID, LENGTH_LONG).show();
 
-        DataBaseHelper db=new DataBaseHelper(this);
+        TextView edit_item_datetime = (TextView) findViewById (R.id.edit_item_datetime);
+        final TextView edit_item_title = (TextView) findViewById (R.id.edit_item_title);
+        final TextView edit_item_content = (TextView) findViewById (R.id.edit_item_content);
+
+        final DataBaseHelper db=new DataBaseHelper(this);
         db.open();
         Cursor c=db.getItem(itemID);
         if (c.moveToFirst()) {
@@ -34,9 +43,6 @@ public class EditItemActivity extends AppCompatActivity {
             +"\n"+c.getString(2)
             +"\n"+c.getString(3);
             makeText(getApplicationContext(),"EditItem\n_id="+itemID+" found:"+text, LENGTH_LONG).show();
-            TextView edit_item_datetime = (TextView) findViewById (R.id.edit_item_datetime);
-            TextView edit_item_title = (TextView) findViewById (R.id.edit_item_title);
-            TextView edit_item_content = (TextView) findViewById (R.id.edit_item_content);
             edit_item_datetime.setText(c.getString(0));
             edit_item_title.setText(c.getString(1));
             edit_item_content.setText(c.getString(2));
@@ -44,6 +50,39 @@ public class EditItemActivity extends AppCompatActivity {
         else makeText(getApplicationContext(),"EditItem\n_id="+itemID+" not found", LENGTH_LONG).show();
         db.close();
 
+        Button button_edit_item_cancel=(Button)findViewById(R.id.button_edit_item_cancel);
+        button_edit_item_cancel.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                finish();}
+        });
+
+
+        Button button_edit_item_save=(Button)findViewById(R.id.button_edit_item_save);
+        button_edit_item_save.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                db.open();
+                db.updateItem(itemID, edit_item_title.getText().toString(), edit_item_content.getText().toString());
+                db.close();
+                finish();
+            }
+        });
+
+/*
+        Button button_sqlite_delete_all=(Button)findViewById(R.id.button_sqlite_delete_all);
+        button_sqlite_delete_all.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                makeText(getApplicationContext(), "SQLite\nDelete all", LENGTH_LONG).show();
+                db.open();
+                db.deleteAll();
+                db.close();
+                try {
+                    showAll();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        */
     }
 
     @Override

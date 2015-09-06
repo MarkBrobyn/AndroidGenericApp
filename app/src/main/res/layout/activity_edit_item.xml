@@ -68,21 +68,21 @@
             <Button
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button1"
+                android:text="Save"
+                android:id="@+id/button_edit_item_save"
                 android:layout_gravity="left" />
             <Button
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button2"
+                android:text="Cancel"
+                android:id="@+id/button_edit_item_cancel"
                 android:layout_gravity="center" />
 
             <Button
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button3"
+                android:text="Delete"
+                android:id="@+id/button_edit_item_delete"
                 android:layout_gravity="right" />
         </TableRow>
             <TableLayout

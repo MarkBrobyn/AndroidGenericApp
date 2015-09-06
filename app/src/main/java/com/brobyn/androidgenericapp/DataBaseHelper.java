@@ -110,6 +110,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return myDataBase.insert("items",null, initialValues);
     }
 
+    public boolean updateItem(String id, String title, String content) {
+        ContentValues values=new ContentValues();
+        values.put("title",title);
+        values.put("content", content);
+        return myDataBase.update("items",values,"_id="+id,null)>0;
+    }
+
     public Cursor getItem(String id) throws SQLException {
         Cursor mCursor = myDataBase.query(true, "items",
                 new String[] {"datetime","title","content","_id"},

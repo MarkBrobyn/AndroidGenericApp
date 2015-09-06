@@ -99,6 +99,16 @@ public class SQLiteActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        try {
+            showAll();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sqlite);
@@ -226,6 +236,8 @@ class Holder {
                 }
             }
         });
+
+
 
 
         db.open();
