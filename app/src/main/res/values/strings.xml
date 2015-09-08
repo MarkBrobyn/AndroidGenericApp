@@ -33,4 +33,6 @@
     <string name="pref1_summ">This is preference 1</string>
     <string name="pref2">Preference 2</string>
     <string name="pref2_summ">This is preference 2</string>
+    <string name="alert_dialog_ok">Yes</string>
+    <string name="alert_dialog_cancel">No</string>
 </resources>

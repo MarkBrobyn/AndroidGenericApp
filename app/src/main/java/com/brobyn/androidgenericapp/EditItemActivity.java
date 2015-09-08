@@ -6,6 +6,7 @@ package com.brobyn.androidgenericapp;
 
 //import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -67,22 +68,16 @@ public class EditItemActivity extends AppCompatActivity {
             }
         });
 
-/*
-        Button button_sqlite_delete_all=(Button)findViewById(R.id.button_sqlite_delete_all);
-        button_sqlite_delete_all.setOnClickListener(new View.OnClickListener() {
+        Button button_edit_item_delete=(Button)findViewById(R.id.button_edit_item_delete);
+        button_edit_item_delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                makeText(getApplicationContext(), "SQLite\nDelete all", LENGTH_LONG).show();
+                makeText(getApplicationContext(), "SQLite\nDelete Item\n"+itemID, LENGTH_LONG).show();
                 db.open();
-                db.deleteAll();
+                db.deleteItem(itemID);
                 db.close();
-                try {
-                    showAll();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+                finish();
             }
         });
-        */
     }
 
     @Override

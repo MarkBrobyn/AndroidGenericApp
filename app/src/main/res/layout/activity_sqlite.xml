@@ -44,7 +44,15 @@
         android:minHeight="500dp"
         />
 
-
+    <ListView
+        android:id="@+id/sqlite_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:textSize="18sp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="@color/appListView"
+        />
 
     <TableLayout
         android:layout_width="wrap_content"
@@ -75,15 +83,7 @@
         </TableRow>
 
     </TableLayout>
-    <ListView
-        android:id="@+id/sqlite_listview"
-        android:layout_width="fill_parent"
-        android:layout_height="100dp"
-        android:textSize="18sp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:background="@color/appListView"
-        />
+
     <TextView
         android:id="@+id/sqlite_status"
         android:text="@string/status"

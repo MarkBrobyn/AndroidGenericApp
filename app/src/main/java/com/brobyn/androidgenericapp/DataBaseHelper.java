@@ -126,6 +126,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return mCursor;
     }
 
+    public boolean deleteItem(String id) {
+        return myDataBase.delete("items","_id="+id,null)>0;
+    }
+
     public void openDataBase() throws SQLException {
         //Open the database
         String myPath = DB_PATH + DB_NAME;

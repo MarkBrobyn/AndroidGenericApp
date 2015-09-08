@@ -1,6 +1,5 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:documentation="documentation.brobyn.com"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -31,7 +30,6 @@
         android:layout_height="wrap_content"
         android:textSize="27sp"
         android:layout_weight="1"
-        documentation:layout_width="0dp"
         android:layout_width="fill_parent"
         android:maxLines="2"
         android:gravity="top"
@@ -61,7 +59,8 @@
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"/>
+        android:gravity="center"
+        >
 
         <TableRow android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -77,7 +76,6 @@
                 android:text="Cancel"
                 android:id="@+id/button_edit_item_cancel"
                 android:layout_gravity="center" />
-
             <Button
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
@@ -85,16 +83,5 @@
                 android:id="@+id/button_edit_item_delete"
                 android:layout_gravity="right" />
         </TableRow>
-            <TableLayout
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:gravity="center"
-                android:layout_weight="1"
-                />
-
-
-
-
-
-
+    </TableLayout>
 </LinearLayout>
