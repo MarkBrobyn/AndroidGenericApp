@@ -7,6 +7,8 @@ package com.brobyn.androidgenericapp;
 //import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -78,6 +80,22 @@ public class EditItemActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    public void sendItem(View v){
+        String[] to={"apps@brobyn.com"};
+        sendEmail(to,"Test","This is a test");
+    }
+
+    private void sendEmail(String[] emailAddresses, String subject, String message){
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setData(Uri.parse("mailto:"));
+        String[] to = emailAddresses;
+        emailIntent.putExtra(Intent.EXTRA_EMAIL,to);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT,subject);
+        emailIntent.putExtra(Intent.EXTRA_TEXT,message);
+        emailIntent.setType("message/rfc822");
+        startActivity(Intent.createChooser(emailIntent,"email"));
     }
 
     @Override
