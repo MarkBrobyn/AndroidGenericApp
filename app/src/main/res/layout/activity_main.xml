@@ -43,6 +43,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/button_edit_item"
                 android:textAllCaps="false"
+                android:onClick="edit"
                 />
             <Button android:id="@+id/button_camera"
                 android:layout_width="@dimen/main_button_width"

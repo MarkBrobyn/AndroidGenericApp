@@ -138,6 +138,11 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
+    public void edit(View v) {
+        Intent i = new Intent(MainActivity.this, edit.class);
+        startActivity(i);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
